@@ -21,14 +21,18 @@ const CurrencyConvertor = ({
   );
 
   return (
-    <div>
+    <div className="pt-2">
       {isLoading && <div className="p-4">Loading...</div>}
+
+      <div className="font-semibold text-lg">
+        Base Currency: <span className="font-bold"> {currencies?.base}</span>{" "}
+      </div>
       <div>Date: {currencies?.date} </div>
       <div>
         {symbols.map((symbol, index) => (
           <p key={index}>
-            <span> {symbol}</span>
-            <span>
+            <span> {symbol}:</span>
+            <span className="font-semibold">
               {" "}
               {currencies?.rates[symbol]
                 ? currencies?.rates[symbol]

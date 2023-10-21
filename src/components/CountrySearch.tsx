@@ -49,17 +49,22 @@ export default function CountrySearch() {
 
   return (
     <div>
-      <input
-        className="px-2 py-1 border-black border my-2"
-        value={searchCountry}
-        onChange={(e) => setSearchCountry(e.target.value)}
-        placeholder="Country name"
-        type="text"
-        name="Country search"
-        required
-      />
-      <div onClick={() => setSearchCountry("")} className="p-2 bg-red-300 my-2">
-        X Clear Search
+      <div className="flex gap-1">
+        <input
+          className="px-2 py-1 border-black border my-2 "
+          value={searchCountry}
+          onChange={(e) => setSearchCountry(e.target.value)}
+          placeholder="Country name"
+          type="text"
+          name="Country search"
+          required
+        />
+        <div
+          onClick={() => setSearchCountry("")}
+          className="p-2 bg-red-600 text-white font-bold my-2 rounded"
+        >
+          X Clear Search
+        </div>
       </div>
 
       <div className="py-2">
@@ -81,7 +86,7 @@ export default function CountrySearch() {
       {countries?.map((country, index) => (
         <div key={index}>
           <div className="text-lg font-bold">{country.name.common} </div>
-          <div className="flex">
+          <div className="flex items-center">
             {" "}
             <p className="font-semibold">Currencies: </p>
             {country &&
@@ -89,7 +94,7 @@ export default function CountrySearch() {
                 <div
                   key={currency}
                   onClick={() => onAddCurrency(currency)}
-                  className="rounded p-1 bg-green-200 m-1"
+                  className="rounded p-1 bg-green-200 m-1 cursor-pointer"
                 >
                   {currency} +
                 </div>
@@ -105,6 +110,7 @@ export default function CountrySearch() {
             setShowCurrencies(true);
           }
         }}
+        className="bg-green-600 text-white font-bold px-2 py-1 mt-2 cursor-pointer"
       >
         Convert Currencies
       </button>
